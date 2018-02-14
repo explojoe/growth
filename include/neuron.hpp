@@ -11,5 +11,4 @@ class Neuron
         float process(float*,int);
         void setWeights(int);
 };
-
 #endif

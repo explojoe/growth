@@ -11,12 +11,13 @@ class Network {
     private:
         std::vector<Layer> layers;
         int numInputs;
+        int numLayers;
 
     public:
         Network();
         Network(int);
 
-        void add_layer(int n_neurons);
+        void add_layer(int);
         float* run(float*);
 };
 #endif

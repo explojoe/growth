@@ -12,8 +12,8 @@ class Layer {
         float* values;
 
         Layer();
-        Layer(int);
-
+        
+        void initialize(int);
         void process();
 };
 #endif

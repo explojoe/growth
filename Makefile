@@ -3,7 +3,6 @@ EXE_FILE=evolve
 HEADERS=$(wildcard include/*.hpp)
 SOURCES=$(wildcard src/*.cpp)
 OBJS=$(patsubst src/%.cpp,build/%.o,$(SOURCES))
-#OBJS=$(SOURCES:.cpp=.o)
 CXXFLAGS=-std=c++11 -g -Iinclude
 
 .PHONY: setup all clean
@@ -18,6 +17,6 @@ $(EXE_FILE): $(OBJS) | setup
 
 build/%.o: src/%.cpp $(HEADERS) | setup
 	$(CC) -c $< -o $@ $(CXXFLAGS)
-			
+
 clean: 
 	rm -f $(OBJS) $(EXE_FILE)
