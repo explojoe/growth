@@ -6,12 +6,17 @@ OBJS=$(patsubst src/%.cpp,build/%.o,$(SOURCES))
 #OBJS=$(SOURCES:.cpp=.o)
 CXXFLAGS=-std=c++11 -g -Iinclude
 
-all: $(EXE_FILE)
+.PHONY: setup all clean
 
-$(EXE_FILE): $(OBJS)
+all: setup $(EXE_FILE)
+
+setup:
+	mkdir -p build
+
+$(EXE_FILE): $(OBJS) | setup
 	$(CC) $^ -o $@ $(CXXFLAGS)
 
-build/%.o: src/%.cpp $(HEADERS)
+build/%.o: src/%.cpp $(HEADERS) | setup
 	$(CC) -c $< -o $@ $(CXXFLAGS)
 			
 clean: 
